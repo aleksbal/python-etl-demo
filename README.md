@@ -1,5 +1,9 @@
 # python-etl-demo
 
+Compact “mini-project / cheat sheet” you can drop into a folder and play with.
+It touches several points: ETL structure, Pandas, PySpark, venv, batch vs streaming, pytest, env vars.
+
+```
 python-etl-demo/
 ├─ main.py
 ├─ etl/
@@ -12,3 +16,4 @@ python-etl-demo/
 │  └─ test_transform.py  # pytest unit tests
 ├─ requirements.txt
 └─ README.md
+```
