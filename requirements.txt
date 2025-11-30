@@ -1,0 +1,5 @@
+pandas
+pyarrow        # needed for to_parquet()
+pyspark
+pytest
+
