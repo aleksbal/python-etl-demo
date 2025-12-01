@@ -30,7 +30,10 @@ def main():
     # -------- PySpark batch demo --------
     # (comment out if you don't have Spark configured)
     print("\nRunning PySpark batch demo...")
-    spark_batch.run_spark_batch_example(str(data_dir / "sales.csv"))
+    spark_batch.run_spark_batch_example(
+        sales_path=str(data_dir / "sales.csv"),
+        customers_path=str(data_dir / "customers.csv"),
+    )
 
     # -------- PySpark streaming demo (conceptual) --------
     # This is just a "cheat sheet" example, not meant to be run here.
