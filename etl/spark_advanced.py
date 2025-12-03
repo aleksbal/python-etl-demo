@@ -125,22 +125,17 @@ def run_spark_advanced_example(data_dir: str) -> None:
         joined_with_metrics
         .groupBy("shipping_country", "shipping_city", "segment")
         .agg(
-            F.sum("line_revenue_net").alias("total_net"),
-            F.sum("line_refund").alias("total_refund"),
-            F.sum("line_revenue_after_returns").alias("total_net_after_returns"),
-            F.sum("line_cost_estimate").alias("total_cost_estimate"),
-            F.sum("line_margin_estimate").alias("total_margin_estimate"),
+            F.round(F.sum("line_revenue_net"), 2).alias("total_net"),
+            F.round(F.sum("line_refund"), 2).alias("total_refund"),
+            F.round(F.sum("line_revenue_after_returns"), 2).alias("total_net_after_returns"),
+            F.round(F.sum("line_cost_estimate"), 2).alias("total_cost_estimate"),
+            F.round(F.sum("line_margin_estimate"), 2).alias("total_margin_estimate"),
             F.count("*").alias("line_count"),
             F.sum("is_returned_int").alias("returned_line_count"),
         )
-        .withColumn(
-            "return_rate_lines",
-            F.col("returned_line_count") / F.col("line_count"),
-        )
-        .withColumn(
-            "margin_pct_estimate",
-            F.col("total_margin_estimate") / F.col("total_net_after_returns"),
-        )
+        .withColumn("return_rate_lines", F.round(F.col("returned_line_count") / F.col("line_count"), 4))
+        .withColumn("margin_pct_estimate",
+                    F.round(F.col("total_margin_estimate") / F.col("total_net_after_returns"), 4))
         .orderBy(F.col("total_net_after_returns").desc())
     )
 
