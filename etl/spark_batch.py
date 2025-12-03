@@ -42,12 +42,11 @@ def run_spark_batch_example(sales_path: str, customers_path: str) -> None:
         )
     )
 
-    # now we *do* have country
     transformed = (
         merged_df
         .select("customer_id", "country", "price", "quantity", "product")
         .withColumn("revenue", col("price") * col("quantity"))
-        .filter(col("revenue") > 0)
+        .filter(col("revenue") > 0)#
     )
 
     # aggregate: revenue per country

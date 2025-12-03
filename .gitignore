@@ -212,5 +212,3 @@ __marimo__/
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/python-etl-demo.iml
 /.idea/vcs.xml
-
-.ipynb_checkpoints/
