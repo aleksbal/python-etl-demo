@@ -4,7 +4,7 @@ from pathlib import Path
 
 from etl.io_ops import read_sales_csv, read_customers_csv, write_parquet
 from etl.transform import build_sales_report
-from etl import spark_batch, spark_streaming
+from etl import spark_batch, spark_streaming, spark_advanced
 
 
 def main():
@@ -39,6 +39,10 @@ def main():
     # This is just a "cheat sheet" example, not meant to be run here.
     print("\nTo see streaming example, look at etl/spark_streaming.py.")
 
+
+    # -------- Advanced Spark demo --------
+    print("\nRunning advanced PySpark demo on synthetic data...")
+    spark_advanced.run_spark_advanced_example(str(data_dir))
 
 if __name__ == "__main__":
     main()

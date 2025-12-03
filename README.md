@@ -34,6 +34,25 @@ pip install -r requirements.txt
 ```
 
 ## Running the batch ETL
+
+This project includes a small script to generate advanced **synthetic demo data** for Pandas and Spark benchmarks.  
+The generated CSV files are written to `data/` and are **not committed to Git** (see `.gitignore`).
+
+### Generate synthetic datasets
+
+From the project root:
+
+```bash
+# activate venv
+source .venv/bin/activate
+
+# install dependencies (once)
+pip install -r requirements.txt
+
+# generate synthetic data into ./data
+python scripts/generate_synthetic_data.py
+
+
 ```bash
 export DATA_DIR=./data
 export OUTPUT_DIR=./output
